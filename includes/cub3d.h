@@ -6,7 +6,7 @@
 /*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 12:26:07 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/05/18 13:26:24 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/05/18 14:16:53 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,49 @@
 
 #include "libft/libft.h"
 #include "minilibx/mlx.h"
+
+//STRUCTS
+
+typedef struct s_textures
+{
+  char          *north;
+  char          *south;
+  char          *west;
+  char          *east;
+  int           *floor;
+  int           *ceiling;
+  unsigned long hex_floor_color;
+  unsigned long hex_ceiling_color;
+  int           x;
+  int           y;
+} t_textures;
+
+typedef struct s_map
+{
+  int   fd;
+  char  **map;
+  int   width;
+  int   height;
+  char *path;
+} t_map;
+
+typedef struct s_player
+{
+  int   x;
+  int   y;
+  char dir;
+} t_player;
+
+typedef struct s_data
+{
+    void        *mlx;
+    void        *win;
+    int         win_height;
+    int         win_width;
+    t_map       map;
+    t_player    player;
+    t_textures  textures;
+} t_data;
 
 //PARSER
 int check_cub(char *filename);
