@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -Werror -Wall -Wextra -g
 INCLUDES = -I includes -I libs -I libs/minilibx
 RM = rm -f 
 NAME = cub3d
@@ -11,7 +11,7 @@ MLX_DIR = libs/minilibx
 
 SRC_FILES = \
 	$(SRC_DIR)/main.c \
-	$(PARSE_DIR)/check_cub.c \
+	$(PARSE_DIR)/check_args.c \
 
 OBJS = $(SRC_FILES:%.c=%.o)
 LIBFT = $(LIBFT_DIR)/libft.a

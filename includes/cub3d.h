@@ -6,7 +6,7 @@
 /*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 12:26:07 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/05/18 14:16:53 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/05/18 16:21:35 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "libft/libft.h"
 #include "minilibx/mlx.h"
+#include <fcntl.h>
 
 //STRUCTS
 
@@ -61,5 +62,6 @@ typedef struct s_data
 
 //PARSER
 int check_cub(char *filename);
+int check_xpm(char *filename);
 
 #endif
