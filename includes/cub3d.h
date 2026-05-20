@@ -16,6 +16,7 @@
 #include "libft/libft.h"
 #include "minilibx/mlx.h"
 
+#include <stdbool.h>
 //STRUCTS
 
 typedef struct s_textures
@@ -48,6 +49,18 @@ typedef struct s_player
   char dir;
 } t_player;
 
+typedef struct s_keys
+{
+    bool  w;
+    bool  a;
+    bool  s;
+    bool  d;
+    bool  up_arrow;
+    bool  down_arrow;
+    bool  left_arrow;
+    bool  right_arrow;
+}   t_keys;
+
 typedef struct s_data
 {
     void        *mlx;
@@ -56,6 +69,7 @@ typedef struct s_data
     int         win_width;
     t_map       map;
     t_player    player;
+    t_keys      keys;
     t_textures  textures;
 } t_data;
 
