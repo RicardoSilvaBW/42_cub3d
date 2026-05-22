@@ -11,6 +11,9 @@ MLX_DIR = libs/minilibx
 
 SRC_FILES = \
 	$(SRC_DIR)/main.c \
+	$(SRC_DIR)/init.c \
+	$(SRC_DIR)/input.c \
+	$(SRC_DIR)/clean.c \
 	$(PARSE_DIR)/check_cub.c \
 
 OBJS = $(SRC_FILES:%.c=%.o)

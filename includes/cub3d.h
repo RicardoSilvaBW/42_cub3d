@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 #include "libft/libft.h"
-#include "minilibx/mlx.h"
+#include "mlx.h"
 
 #include <stdbool.h>
 //STRUCTS
@@ -49,17 +49,17 @@ typedef struct s_player
   char dir;
 } t_player;
 
-typedef struct s_keys
+enum e_keys
 {
-    bool  w;
-    bool  a;
-    bool  s;
-    bool  d;
-    bool  up_arrow;
-    bool  down_arrow;
-    bool  left_arrow;
-    bool  right_arrow;
-}   t_keys;
+	key_w = 1u,
+	key_a = 1u << 1,
+	key_s = 1u << 2,
+	key_d = 1u << 3,
+	key_up = 1u << 4,
+	key_down = 1u << 5,
+	key_left = 1u << 6,
+	key_right = 1u << 7
+};
 
 typedef struct s_data
 {
@@ -67,13 +67,23 @@ typedef struct s_data
     void        *win;
     int         win_height;
     int         win_width;
+	bool		should_close;
     t_map       map;
     t_player    player;
-    t_keys      keys;
+    size_t		keys;
     t_textures  textures;
 } t_data;
 
 //PARSER
-int check_cub(char *filename);
+int		check_cub(char *filename);
+
+
+//INIT
+int		init(t_data *data);
+
+
+//INPUT
+void 	key_press(int keycode, t_data *data);
+void 	key_release(int keycode, t_data *data);
 
 #endif
