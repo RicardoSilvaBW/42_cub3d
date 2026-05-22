@@ -6,7 +6,7 @@
 /*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 14:04:23 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/05/22 14:13:48 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/05/22 14:45:44 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,15 @@ int main(int argc, char **argv)
         return (1);
     if (!parse_textures(&data))
         return (1);
-    ft_printf("Texture parsing successful!\n\n");
-	ft_printf("NO: %s", data.textures.north);
-	ft_printf("SO: %s", data.textures.south);
-	ft_printf("WE: %s", data.textures.west);
-	ft_printf("EA: %s", data.textures.east);
-
     if (!parse_colors(&data))
         return (1);
-
-    ft_printf("Floor: %d,%d,%d\n",
-	data.textures.floor[0],
-	data.textures.floor[1],
-	data.textures.floor[2]);
-
-    ft_printf("Ceiling: %d,%d,%d\n",
-	data.textures.ceiling[0],
-	data.textures.ceiling[1],
-	data.textures.ceiling[2]);
-    
+    if (init(&data))
+    {
+        exit(EXIT_FAILURE);
+    }
+	mlx_loop_hook(data.mlx, main_loop, &data);
+	mlx_loop(data.mlx);
+    clean();
     return (0);
 }
 
