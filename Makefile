@@ -1,11 +1,12 @@
 CC = cc
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -Werror -Wall -Wextra -g
 INCLUDES = -I includes -I libs -I libs/minilibx
 RM = rm -f 
 NAME = cub3d
 
 SRC_DIR = src
 PARSE_DIR = $(SRC_DIR)/parser
+UTILS_DIR = $(SRC_DIR)/utils
 LIBFT_DIR = libs/libft
 MLX_DIR = libs/minilibx
 
@@ -16,6 +17,14 @@ SRC_FILES = \
 	$(SRC_DIR)/clean.c \
 	$(SRC_DIR)/utils.c \
 	$(PARSE_DIR)/check_cub.c \
+	$(UTILS_DIR)/skip_spaces.c \
+	$(UTILS_DIR)/check_identifier.c \
+	$(UTILS_DIR)/free_split.c \
+	$(PARSE_DIR)/check_args.c \
+	$(PARSE_DIR)/load_file.c \
+	$(PARSE_DIR)/check_textures.c \
+	$(PARSE_DIR)/check_colors.c \
+	$(PARSE_DIR)/parser.c \
 
 OBJS = $(SRC_FILES:%.c=%.o)
 LIBFT = $(LIBFT_DIR)/libft.a
