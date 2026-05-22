@@ -12,6 +12,11 @@ MLX_DIR = libs/minilibx
 
 SRC_FILES = \
 	$(SRC_DIR)/main.c \
+	$(SRC_DIR)/init.c \
+	$(SRC_DIR)/input.c \
+	$(SRC_DIR)/clean.c \
+	$(SRC_DIR)/utils.c \
+	$(PARSE_DIR)/check_cub.c \
 	$(UTILS_DIR)/skip_spaces.c \
 	$(UTILS_DIR)/check_identifier.c \
 	$(UTILS_DIR)/free_split.c \
