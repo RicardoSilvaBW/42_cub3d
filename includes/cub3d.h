@@ -61,6 +61,15 @@ enum e_keys
 	key_right = 1u << 7
 };
 
+typedef struct	s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
+
 typedef struct s_data
 {
     void        *mlx;
@@ -68,11 +77,16 @@ typedef struct s_data
     int         win_height;
     int         win_width;
 	bool		should_close;
+	t_img		frame;
     t_map       map;
     t_player    player;
     size_t		keys;
     t_textures  textures;
 } t_data;
+
+#define FT_WIDTH 1920
+
+#define FT_HEIGHT 1080
 
 //PARSER
 int		check_cub(char *filename);

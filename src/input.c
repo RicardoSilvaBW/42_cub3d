@@ -18,7 +18,7 @@ static void stt_key_event(int keycode, t_data *data)
 {
     if (keycode == XK_Escape)
     {
-		mlx_loop_end();
+		// close and free (exit?)
 		return ;
 	}
 }
