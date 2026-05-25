@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_split.c                                       :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
+/*   By: feazeved <feazeved@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/22 14:06:33 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/05/22 14:06:58 by rjorge-p         ###   ########.fr       */
+/*   Created: 2026/05/22 11:14:16 by feazeved          #+#    #+#             */
+/*   Updated: 2026/05/22 11:15:06 by feazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	free_split(char **split)
+int parse_map(t_data *data)
 {
-	int	i;
 
-	if (!split)
-		return ;
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
+    return (1);
 }

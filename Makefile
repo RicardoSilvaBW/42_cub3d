@@ -15,15 +15,11 @@ SRC_FILES = \
 	$(SRC_DIR)/init.c \
 	$(SRC_DIR)/input.c \
 	$(SRC_DIR)/clean.c \
-	$(SRC_DIR)/utils.c \
-	$(PARSE_DIR)/check_cub.c \
-	$(UTILS_DIR)/skip_spaces.c \
-	$(UTILS_DIR)/check_identifier.c \
-	$(UTILS_DIR)/free_split.c \
+	$(SRC_DIR)/drawing_utils.c \
 	$(PARSE_DIR)/check_args.c \
-	$(PARSE_DIR)/load_file.c \
 	$(PARSE_DIR)/check_textures.c \
 	$(PARSE_DIR)/check_colors.c \
+	$(PARSE_DIR)/check_map.c \
 	$(PARSE_DIR)/parser.c \
 
 OBJS = $(SRC_FILES:%.c=%.o)

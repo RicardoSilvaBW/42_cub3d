@@ -106,7 +106,13 @@ typedef struct s_data
 #define FT_HEIGHT 1080
 
 //PARSER
+int   parser(t_data *data);
 int		check_cub(char *filename);
+int   check_xpm(char *filename);
+int   parse_textures(t_data *data);
+int   parse_colors(t_data *data);
+int   parse_map(t_data *data);
+
 
 //INIT
 int		init(t_data *data);
@@ -115,17 +121,14 @@ int		init(t_data *data);
 void 	key_press(int keycode, t_data *data);
 void 	key_release(int keycode, t_data *data);
 
-//UTILS
-char *skip_spaces(char *str);
-int  is_identifier(char *line, char *id);
-t_identifier get_identifier(char *line);
+//CLEAN
 void	free_split(char **split);
+void  free_parse(t_data *data)
+void  clean(t_data *data);
 
-//PARSER
-int check_cub(char *filename);
-int check_xpm(char *filename);
-int load_file(t_data *data, char *path);
-int parse_textures(t_data *data);
-int parse_colors(t_data *data);
+//DRAWING_UTILS
+void	put_pixel(t_img *img, int x, int y, int color);
+void	clear_image(t_data *data);
+
 
 #endif

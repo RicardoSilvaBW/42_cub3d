@@ -15,35 +15,65 @@
 static int store_texture(char **texture, char *path)
 {
     if (*texture != NULL)
-        return (ft_printf("Error: Repeated texture identifier.\n"), 0);
+        return (write(2, "Error: Repeated texture identifier.\n", 36), 0);
     if (*path == '\0' || *path == '\n')
-        return (ft_printf("Error: Missing texture path.\n"), 0);
+        return (write(2, "Error: Missing texture path.\n", 29), 0);
     if (!check_xpm(path))
-        return (ft_printf("Error: Texture file without .xpm extension.\n"), 0);
+        return (write(2, "Error: Texture file without .xpm extension.\n", 44), 0);
     *texture = ft_strdup(path);
     if (!*texture)
+        return (perror("Error"), 0);
+    return (1);
+}
+
+static int  is_identifier(char *line, char *id)
+{
+    int len;
+
+    len = ft_strlen(id);
+    if (ft_strncmp(line, id, len) != 0)
+        return (0);
+    if (line[len] != ' ' && line[len] != '\t')
         return (0);
     return (1);
 }
 
+static t_identifier get_identifier(char *line)
+{
+    if (is_identifier(line, "NO"))
+        return (ID_NO);
+    if (is_identifier(line, "SO"))
+        return (ID_SO);
+    if (is_identifier(line, "WE"))
+        return (ID_WE);
+    if (is_identifier(line, "EA"))
+        return (ID_EA);
+    if (is_identifier(line, "F"))
+        return (ID_F);
+    if (is_identifier(line, "C"))
+        return (ID_C);
+    return (ID_NONE);
+}
+
 static int  parse_texture_line(t_data *data, char *line)
 {
-    char			*path;
-	t_identifier	id;
+    char          *path;
+    t_identifier  id;
 
-	line = skip_spaces(line);
-	id = get_identifier(line);
-	if (id == ID_NONE)
-		return (1);
-	path = skip_spaces(line + 2);
-	if (id == ID_NO)
-		return (store_texture(&data->textures.north, path));
-	else if (id == ID_SO)
-		return (store_texture(&data->textures.south, path));
-	else if (id == ID_WE)
-		return (store_texture(&data->textures.west, path));
-	else if (id == ID_EA)
-		return (store_texture(&data->textures.east, path));
+    id = get_identifier(line);
+    if (id == ID_NONE)
+        return (1);
+    path = line += 2;
+    while (*path == ' ')
+        path++
+    if (id == ID_NO)
+        return (store_texture(&data->textures.north, path));
+    else if (id == ID_SO)
+        return (store_texture(&data->textures.south, path));
+    else if (id == ID_WE)
+        return (store_texture(&data->textures.west, path));
+    else if (id == ID_EA)
+        return (store_texture(&data->textures.east, path));
 	return (1);
 }
 
@@ -59,12 +89,13 @@ int parse_textures(t_data *data)
         i++;
     }
     if (!data->textures.north)
-        return (ft_printf("Error: Missing NO texture.\n"), 0);
+        return (write(2, "Error: Missing NO texture.\n", 27), 0);
     if (!data->textures.south)
-        return (ft_printf("Error: Missing SO texture.\n"), 0);
+        return (write(2, "Error: Missing SO texture.\n", 27), 0);
     if (!data->textures.west)
-        return (ft_printf("Error: Missing WE texture.\n"), 0);
+        return (write(2, "Error: Missing WE texture.\n", 27), 0);
     if (!data->textures.east)
-        return (ft_printf("Error: Missing EA texture.\n"), 0);
+        return (write(2, "Error: Missing EA texture.\n", 27), 0);
     return (1);
 }
+

@@ -63,3 +63,4 @@ void  key_release(int keycode, t_data *data)
     if (keycode == XK_d)
         data->keys &= ~(size_t)key_d;
 }
+
