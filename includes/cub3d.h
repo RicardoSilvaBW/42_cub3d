@@ -6,7 +6,7 @@
 /*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 12:26:07 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/05/22 14:09:41 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/05/27 13:55:36 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,36 @@ typedef struct s_map
 
 typedef struct s_player
 {
-  int   x;
-  int   y;
-  char dir;
+  char    dir;
+  double  pos_x;
+  double  pos_y;
+  double  dir_x;
+  double  dir_y;
+  double  plane_x;
+  double  plane_y;
 } t_player;
+
+typedef struct s_ray
+{
+  double  camera_x;
+  double  ray_dir_x;
+  double  ray_dir_y;
+  double  delta_dist_x;
+  double  delta_dist_y;
+  double  side_dist_x;
+  double  side_dist_y;
+  double  perp_wall_dist;
+  int     map_x;
+  int     map_y;
+  int     step_x;
+  int     step_y;
+  int     hit;
+  int     side;
+  int     line_height;
+  int     draw_start;
+  int     draw_end;
+} t_ray;
+
 
 typedef struct	s_img
 {
@@ -93,11 +119,12 @@ typedef struct s_data
     void        *win;
     int         win_height;
     int         win_width;
-	bool		should_close;
-	t_img		frame;
+	  bool        should_close;
+	  t_img       frame;
     t_map       map;
     t_player    player;
-    size_t		keys;
+    t_ray       ray;
+    size_t      keys;
     t_textures  textures;
 } t_data;
 
@@ -113,9 +140,8 @@ int   parse_textures(t_data *data);
 int   parse_colors(t_data *data);
 int   parse_map(t_data *data);
 
-
 //INIT
-int		init(t_data *data);
+int		init(t_data *data, char *argv);
 
 //INPUT
 void 	key_press(int keycode, t_data *data);
@@ -123,7 +149,7 @@ void 	key_release(int keycode, t_data *data);
 
 //CLEAN
 void	free_split(char **split);
-void  free_parse(t_data *data)
+void  free_parse(t_data *data);
 void  clean(t_data *data);
 
 //DRAWING_UTILS
