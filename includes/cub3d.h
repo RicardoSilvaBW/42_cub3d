@@ -132,6 +132,8 @@ typedef struct s_data
 
 #define FT_HEIGHT 1080
 
+#define FT_FOV 0.66f
+
 //PARSER
 int   parser(t_data *data);
 int		check_cub(char *filename);
