@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feazeved <feazeved@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:14:16 by feazeved          #+#    #+#             */
-/*   Updated: 2026/05/22 11:15:06 by feazeved         ###   ########.fr       */
+/*   Updated: 2026/06/03 17:49:59 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static const char	lut[256] = {
+		['0'] = 1, ['1'] = 1, [' '] = 1, ['N'] = 1, ['S'] = 1, ['W'] = 1,
+		['E'] = 1};
 
 static void	init_dir_plane(t_data *data)
 {
@@ -50,17 +54,14 @@ static int	check_elements_and_player(t_data *data, int *num_player)
 {
 	int	i;
 	int	j;
-	static const char	lut[256] = {
-		['0'] = 1, ['1'] = 1, [' '] = 1, ['N'] = 1, ['S'] = 1, ['W'] = 1,
-		['E'] = 1};
 
 	i = 0;
 	while (data->map.map[i])
 	{
 		j = 0;
-		while (data->map[i][j])
+		while (data->map.map[i][j])
 		{
-			if (!lut[data->map.map[i][j]])
+			if (!lut[(unsigned char)data->map.map[i][j]])
 				return (1);
 			if (ft_strchr("NSWE", data->map.map[i][j]))
 			{
@@ -87,7 +88,7 @@ static int	check_walls(t_data *data, int max_y)
 		j = -1;
 		while (m[i][++j])
 		{
-			if (lut[data->map.map[i][j]])
+			if (lut[(unsigned char)data->map.map[i][j]])
 			{
 				if (!i || i == max_y || !j || !m[i][j + 1])
 					return (1);
@@ -109,7 +110,7 @@ int parse_map(t_data *data)
 	int	max_y;
 
 	num_player = 0;
-	if (ckeck_elements_and_player(data, &num_player) || num_player != 1)
+	if (check_elements_and_player(data, &num_player) || num_player != 1)
 		return (write(2, "Error: Invalid map elements.\n", 29), 1);
 	max_y = 0;
 	while (data->map.map[max_y])

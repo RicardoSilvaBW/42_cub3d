@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feazeved <feazeved@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:14:16 by feazeved          #+#    #+#             */
-/*   Updated: 2026/05/22 11:15:06 by feazeved         ###   ########.fr       */
+/*   Updated: 2026/06/03 15:22:31 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void    render_walls(t_data *data)
 {
-    //raycasting
+    raycasting(data, &data->player);
 }
