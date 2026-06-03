@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feazeved <feazeved@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:12:51 by feazeved          #+#    #+#             */
-/*   Updated: 2026/05/22 11:14:07 by feazeved         ###   ########.fr       */
+/*   Updated: 2026/06/03 17:03:43 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <X11/Xlib.h>
 
 #include "cub3d.h"
-#include "libft.h"
 
 static void stt_init_hooks(t_data *data)
 {

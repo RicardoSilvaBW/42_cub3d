@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
+/*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:27:52 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/05/22 13:47:52 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/03 17:41:23 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int  is_identifier(char *line, char *id)
     return (1);
 }
 
-static t_identifier get_identifier(char *line)
+t_identifier get_identifier(char *line)
 {
     if (is_identifier(line, "NO"))
         return (ID_NO);
@@ -65,15 +65,23 @@ static int  parse_texture_line(t_data *data, char *line)
         return (1);
     path = line += 2;
     while (*path == ' ')
-        path++
+        path++;
     if (id == ID_NO)
+    {
         return (store_texture(&data->textures.north, path));
-    else if (id == ID_SO)
+    }
+    if (id == ID_SO)
+    {
         return (store_texture(&data->textures.south, path));
-    else if (id == ID_WE)
+    }
+    if (id == ID_WE)
+    {
         return (store_texture(&data->textures.west, path));
-    else if (id == ID_EA)
+    }
+    if (id == ID_EA)
+    {
         return (store_texture(&data->textures.east, path));
+    }
 	return (1);
 }
 

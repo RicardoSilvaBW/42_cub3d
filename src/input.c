@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feazeved <feazeved@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:14:16 by feazeved          #+#    #+#             */
-/*   Updated: 2026/05/22 11:15:06 by feazeved         ###   ########.fr       */
+/*   Updated: 2026/06/03 17:11:23 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <X11/keysym.h>
 
 #include "cub3d.h"
-//
+/*
 static void stt_key_event(int keycode, t_data *data)
 {
     if (keycode == XK_Escape)
@@ -21,9 +21,9 @@ static void stt_key_event(int keycode, t_data *data)
 		// close and free (exit?)
 		return ;
 	}
-}
+}*/
 
-void  key_press(int keycode, t_data *data)
+int  key_press(int keycode, t_data *data)
 {
     if (keycode == XK_Right)
         data->keys |= (size_t)key_right;
@@ -41,11 +41,12 @@ void  key_press(int keycode, t_data *data)
         data->keys |= (size_t)key_s;
     if (keycode == XK_d)
         data->keys |= (size_t)key_d;
+    return (0);
 }
 
-void  key_release(int keycode, t_data *data)
+int  key_release(int keycode, t_data *data)
 {
-    stt_key_event(keycode, data);
+    //stt_key_event(keycode, data);
     if (keycode == XK_Right)
         data->keys &= ~(size_t)key_right;
     if (keycode == XK_Left)
@@ -62,5 +63,6 @@ void  key_release(int keycode, t_data *data)
         data->keys &= ~(size_t)key_s;
     if (keycode == XK_d)
         data->keys &= ~(size_t)key_d;
+    return (0);
 }
 

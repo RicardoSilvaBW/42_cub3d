@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
+/*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 12:26:07 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/05/27 14:26:44 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/03 17:41:40 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
+#include <stdio.h>
+
 
 //ENUM
 
@@ -142,13 +144,14 @@ int   check_xpm(char *filename);
 int   parse_textures(t_data *data);
 int   parse_colors(t_data *data);
 int   parse_map(t_data *data);
+t_identifier get_identifier(char *line);
 
 //INIT
-int		init(t_data *data, char *argv);
+int		init(t_data *data, char **argv);
 
 //INPUT
-void 	key_press(int keycode, t_data *data);
-void 	key_release(int keycode, t_data *data);
+int 	key_press(int keycode, t_data *data);
+int 	key_release(int keycode, t_data *data);
 
 //CLEAN
 void	free_split(char **split);
@@ -158,6 +161,12 @@ void  clean(t_data *data);
 //DRAWING_UTILS
 void	put_pixel(t_img *img, int x, int y, int color);
 void	clear_image(t_data *data);
+
+//RENDER
+void    render_walls(t_data *data);
+
+//RAYCASTING
+int raycasting(t_data *data, t_player *player);
 
 
 #endif
