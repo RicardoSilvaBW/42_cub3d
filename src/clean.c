@@ -52,5 +52,4 @@ void    clean(t_data *data)
 	if (data->mlx)
 		mlx_destroy_display(data->mlx);
 	free(data->mlx);
-	exit(0);
 }

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <X11/X.h>
+#include <bits/time.h>
 #include <unistd.h>
 #include <X11/Xlib.h>
 
@@ -44,6 +45,9 @@ static int  stt_init_mlx(t_data *d)
         return (write(2, "Error: Mlx get data addr fail.\n", 31), 1);
     return (0);
 }
+
+#include <sys/time.h>
+
 
 int init(t_data *data, char **argv)
 {

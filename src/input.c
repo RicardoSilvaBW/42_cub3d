@@ -14,20 +14,16 @@
 
 #include "cub3d.h"
 #include "mlx.h"
-/*
-static void stt_key_event(int keycode, t_data *data)
-{
-    if (keycode == XK_Escape)
-    {
-		// close and free (exit?)
-		return ;
-	}
-}*/
 
 int  key_press(int keycode, t_data *data)
 {
 	if (keycode == XK_Escape)
 		return (mlx_loop_end(data->mlx));
+	if (keycode == XK_Shift_L)
+	{
+		data->keys |= (size_t)key_shift;
+		data->player.speed = FT_RUN_SPEED;
+	}
     if (keycode == XK_Right)
         data->keys |= (size_t)key_right;
     if (keycode == XK_Left)
@@ -49,7 +45,11 @@ int  key_press(int keycode, t_data *data)
 
 int  key_release(int keycode, t_data *data)
 {
-    //stt_key_event(keycode, data);
+	if (keycode == XK_Shift_L)
+	{
+		data->keys &= ~(size_t)key_shift;
+		data->player.speed = FT_MOVE_SPEED;
+	}
     if (keycode == XK_Right)
         data->keys &= ~(size_t)key_right;
     if (keycode == XK_Left)

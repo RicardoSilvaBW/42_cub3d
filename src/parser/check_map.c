@@ -43,6 +43,7 @@ static void	save_coords(t_data *data, int i, int j, int *num_player)
 	(*num_player)++;
 	data->player.pos_x = j + 0.5;
 	data->player.pos_y = i + 0.5;
+	data->player.speed = FT_MOVE_SPEED;
 	init_dir_plane(data);
 }
 

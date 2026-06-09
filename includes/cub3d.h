@@ -21,6 +21,7 @@
 # include <stdbool.h>
 # include <math.h>
 # include <stdio.h>
+#include <time.h>
 
 //ENUM
 typedef enum e_identifier
@@ -43,7 +44,8 @@ enum e_keys
 	key_up = 1u << 4,
 	key_down = 1u << 5,
 	key_left = 1u << 6,
-	key_right = 1u << 7
+	key_right = 1u << 7,
+	key_shift = 1u << 8
 };
 
 //STRUCTS
@@ -81,6 +83,7 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	double	speed;
 }	t_player;
 
 typedef struct s_ray
@@ -115,17 +118,17 @@ typedef struct s_img
 
 typedef struct s_data
 {
-	void		*mlx;
-	void		*win;
-	int			win_height;
-	int			win_width;
-	bool		should_close;
-	t_img		frame;
-	t_map		map;
-	t_player	player;
-	t_ray		ray;
-	size_t		keys;
-	t_textures	textures;
+	void			*mlx;
+	void			*win;
+	int				win_height;
+	int				win_width;
+	bool			should_close;
+	t_img			frame;
+	t_map			map;
+	t_player		player;
+	t_ray			ray;
+	size_t			keys;
+	t_textures		textures;
 }	t_data;
 
 # define FT_WIDTH 1920
@@ -133,6 +136,13 @@ typedef struct s_data
 # define FT_HEIGHT 1080
 
 # define FT_FOV 0.66
+
+# define FT_MOVE_SPEED 0.03
+# define FT_RUN_SPEED 0.07
+
+# define FT_ROT_SPEED 0.03
+
+# define FT_COLLISION_MARGIN 1
 
 //PARSER
 int				parser(t_data *data);
