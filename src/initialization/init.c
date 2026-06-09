@@ -32,6 +32,8 @@ static int  stt_init_mlx(t_data *d)
     d->win_height = FT_HEIGHT;
     if (d->win_width <= 10 || d->win_height <= 10)
         return (write(2, "Error: Bad window proportions.\n", 31), 1);
+    if (load_textures(d))
+        return (1);
     d->win = mlx_new_window(d->mlx, d->win_width, d->win_height, "Backrooms");
     if (!d->win)
     	return (write(2, "Error: Mlx new window fail.\n", 22), 1);
@@ -54,13 +56,11 @@ int init(t_data *data, char **argv)
     if (!data->mlx)
     {
         write(2, "Error: Mlx init fail.\n", 22);
-        free_parse(data);
+        clean(data);
         return (1);
     }
     if (stt_init_mlx(data))
-        return (free_parse(data), 1);
-    if (load_textures(data))
-        return (free_parse(data), 1);
+        return (clean(data), 1);
     stt_init_hooks(data);
     return (0);
 }

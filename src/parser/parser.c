@@ -62,6 +62,8 @@ static int load_file(t_data *data, char *path)
 
 int parser(t_data *data)
 {
+	if (!check_cub(data->map.path))
+		return (write(2, "Error: File not with .cub extension\n", 36), 0);
     if (!load_file(data, data->map.path))
         return (0);
     if (!parse_textures(data) || !parse_colors(data))

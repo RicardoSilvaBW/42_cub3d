@@ -2,7 +2,7 @@ CC = cc
 CFLAGS = -Werror -Wall -Wextra -g
 INCLUDES = -I includes -I libs -I libs/minilibx
 RM = rm -f
-NAME = cub3d
+NAME = cub3D
 
 SRC_DIR = src
 INIT_DIR = $(SRC_DIR)/initialization

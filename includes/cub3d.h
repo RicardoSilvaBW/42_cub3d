@@ -142,11 +142,11 @@ typedef struct s_data
 # define FT_FOV 0.66
 
 # define FT_MOVE_SPEED 0.05
-# define FT_RUN_SPEED 0.09
+# define FT_RUN_SPEED 0.1
 
 # define FT_ROT_SPEED 0.05
 
-# define FT_COLLISION_MARGIN 1
+# define FT_COLLISION_MARGIN 1.5
 
 //PARSER
 int				parser(t_data *data);

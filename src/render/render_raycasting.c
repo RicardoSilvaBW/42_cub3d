@@ -110,12 +110,12 @@ static void draw_textured_column(t_data *data, t_ray *ray, t_img *texture, int x
 	y = 0;
 	while (y < ray->draw_start)
 		put_pixel(&data->frame, x, y++, data->textures.hex_ceiling_color);
-	
+
 	step = (double)texture->height / ray->line_height;
 	tex_pos = (ray->draw_start
 			- data->win_height / 2
 			+ ray-> line_height / 2) * step;
-		
+
 	while (y <= ray->draw_end)
 	{
 		tex_y = (int)tex_pos;
@@ -128,10 +128,8 @@ static void draw_textured_column(t_data *data, t_ray *ray, t_img *texture, int x
 		tex_pos += step;
 		y++;
 	}
-
 	while (y < data->win_height)
 		put_pixel(&data->frame, x, y++, data->textures.hex_floor_color);
-	
 }
 
 int raycasting(t_data *data)

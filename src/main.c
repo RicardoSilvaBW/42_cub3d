@@ -120,7 +120,7 @@ int main(int argc, char **argv)
     static t_data   data;
 
     if (argc != 2)
-    	return (write(2, "Error: Use ./cub3d <map.cub>.\n", 26), EXIT_FAILURE);
+    	return (write(2, "Error: Use ./cub3d <map.cub>.\n", 30), EXIT_FAILURE);
     if (init(&data, argv))
     	return (EXIT_FAILURE);
     mlx_loop(data.mlx);
