@@ -47,13 +47,16 @@ void    clean(t_data *data)
 	free_parse(data);
 	if (data->mlx && data->win)
 		mlx_destroy_window(data->mlx, data->win);
-	if (data->mlx && data->frame.img) {
-		mlx_destroy_image(data->mlx, &data->textures.north);
-		mlx_destroy_image(data->mlx, &data->textures.south);
-		mlx_destroy_image(data->mlx, &data->textures.west);
-		mlx_destroy_image(data->mlx, &data->textures.east);
-		mlx_destroy_image(data->mlx, &data->frame.img);
-    }
+	if (data->mlx && data->textures.north.img)
+        mlx_destroy_image(data->mlx, data->textures.north.img);
+    if (data->mlx && data->textures.south.img)
+        mlx_destroy_image(data->mlx, data->textures.south.img);
+    if (data->mlx && data->textures.west.img)
+        mlx_destroy_image(data->mlx, data->textures.west.img);
+    if (data->mlx && data->textures.east.img)
+        mlx_destroy_image(data->mlx, data->textures.east.img);
+    if (data->mlx && data->frame.img)
+		mlx_destroy_image(data->mlx, data->frame.img);
 	if (data->mlx)
 		mlx_destroy_display(data->mlx);
 	free(data->mlx);
