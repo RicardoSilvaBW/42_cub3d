@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feazeved <feazeved@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:12:51 by feazeved          #+#    #+#             */
-/*   Updated: 2026/05/22 11:14:07 by feazeved         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:47:03 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void  free_parse(t_data *data)
 {
     if (data->map.file)
         free_split(data->map.file);
-    if (data->textures.north)
-        free(data->textures.north);
-    if (data->textures.south)
-        free(data->textures.south);
-    if (data->textures.west)
-        free(data->textures.west);
-    if (data->textures.east)
-        free(data->textures.east);
+    if (data->textures.north_path)
+        free(data->textures.north_path);
+    if (data->textures.south_path)
+        free(data->textures.south_path);
+    if (data->textures.west_path)
+        free(data->textures.west_path);
+    if (data->textures.east_path)
+        free(data->textures.east_path);
 }
 
 void    clean(t_data *data)
@@ -47,10 +47,14 @@ void    clean(t_data *data)
 	free_parse(data);
 	if (data->mlx && data->win)
 		mlx_destroy_window(data->mlx, data->win);
-	if (data->mlx && data->frame.img)
-		mlx_destroy_image(data->mlx, data->frame.img);
+	if (data->mlx && data->frame.img) {
+		mlx_destroy_image(data->mlx, &data->textures.north);
+		mlx_destroy_image(data->mlx, &data->textures.south);
+		mlx_destroy_image(data->mlx, &data->textures.west);
+		mlx_destroy_image(data->mlx, &data->textures.east);
+		mlx_destroy_image(data->mlx, &data->frame.img);
+    }
 	if (data->mlx)
 		mlx_destroy_display(data->mlx);
 	free(data->mlx);
-	exit(0);
 }

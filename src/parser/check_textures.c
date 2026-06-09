@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
+/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:27:52 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/06/03 17:41:23 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:09:20 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,19 @@ static int  parse_texture_line(t_data *data, char *line)
         path++;
     if (id == ID_NO)
     {
-        return (store_texture(&data->textures.north, path));
+        return (store_texture(&data->textures.north_path, path));
     }
     if (id == ID_SO)
     {
-        return (store_texture(&data->textures.south, path));
+        return (store_texture(&data->textures.south_path, path));
     }
     if (id == ID_WE)
     {
-        return (store_texture(&data->textures.west, path));
+        return (store_texture(&data->textures.west_path, path));
     }
     if (id == ID_EA)
     {
-        return (store_texture(&data->textures.east, path));
+        return (store_texture(&data->textures.east_path, path));
     }
 	return (1);
 }
@@ -96,13 +96,13 @@ int parse_textures(t_data *data)
             return (0);
         i++;
     }
-    if (!data->textures.north)
+    if (!data->textures.north_path)
         return (write(2, "Error: Missing NO texture.\n", 27), 0);
-    if (!data->textures.south)
+    if (!data->textures.south_path)
         return (write(2, "Error: Missing SO texture.\n", 27), 0);
-    if (!data->textures.west)
+    if (!data->textures.west_path)
         return (write(2, "Error: Missing WE texture.\n", 27), 0);
-    if (!data->textures.east)
+    if (!data->textures.east_path)
         return (write(2, "Error: Missing EA texture.\n", 27), 0);
     return (1);
 }

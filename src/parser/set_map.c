@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
+/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:00:00 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/06/08 12:00:00 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:02:45 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	check_blank_line(char **file, int start)
 	return (0);
 }
 
-static int	strip_newlines(char **map)
+int	strip_newlines(char **map)
 {
 	int	i;
 	int	len;

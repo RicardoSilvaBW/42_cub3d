@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   render_raycasting.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 13:21:49 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/06/03 16:53:39 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:40:27 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,35 +99,47 @@ static void	calculate_wall(t_ray *ray, t_data *data)
 		ray->draw_end = data->win_height - 1;
 }
 
-static void	draw_column(t_ray *ray, t_data *data, int x)
+static void draw_textured_column(t_data *data, t_ray *ray, t_img *texture, int x, int tex_x)
 {
-	int	y;
+	int				y;
+	int				tex_y;
+	double			step;
+	double			tex_pos;
+	unsigned int	color;
 
 	y = 0;
 	while (y < ray->draw_start)
-	{
-		put_pixel(&data->frame, x, y, data->textures.hex_ceiling_color);
-		y++;
-	}
+		put_pixel(&data->frame, x, y++, data->textures.hex_ceiling_color);
+	
+	step = (double)texture->height / ray->line_height;
+	tex_pos = (ray->draw_start
+			- data->win_height / 2
+			+ ray-> line_height / 2) * step;
+		
 	while (y <= ray->draw_end)
 	{
-		if (ray->side == 1)
-			put_pixel(&data->frame, x, y, WALL_DARK);
-		else
-			put_pixel(&data->frame, x, y, WALL_LIGTH);
-		y++;
-	}
-	while (y < data->win_height)
-	{
-		put_pixel(&data->frame, x, y, data->textures.hex_floor_color);
+		tex_y = (int)tex_pos;
+		if (tex_y < 0)
+			tex_y = 0;
+		if (tex_y >= texture->height)
+			tex_y = texture->height - 1;
+		color = get_texture_pixel(texture, tex_x, tex_y);
+		put_pixel(&data->frame, x, y, color);
+		tex_pos += step;
 		y++;
 	}
 
+	while (y < data->win_height)
+		put_pixel(&data->frame, x, y++, data->textures.hex_floor_color);
+	
 }
 
 int raycasting(t_data *data)
 {
     t_ray   ray;
+	t_img	*texture;
+	double	wall_x;
+	int		tex_x;
     int     x;
 
     x = 0;
@@ -137,7 +149,11 @@ int raycasting(t_data *data)
      	init_dda(&ray, &data->player);
      	exec_dda(&ray, data);
       	calculate_wall(&ray, data);
-       	draw_column(&ray, data, x);
+
+		texture = get_wall_texture(data, &ray);
+		wall_x = calculate_wall_x(&ray, &data->player);
+		tex_x = calculate_tex_x(texture, &ray, wall_x);
+		draw_textured_column(data, &ray, texture, x, tex_x);
        	x++;
     }
     return (0);

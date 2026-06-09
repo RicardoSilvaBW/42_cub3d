@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
+/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 12:26:07 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/06/03 17:41:40 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/09 17:41:07 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,33 @@ enum e_keys
 	key_up = 1u << 4,
 	key_down = 1u << 5,
 	key_left = 1u << 6,
-	key_right = 1u << 7
+	key_right = 1u << 7,
+	key_shift = 1u << 8
 };
 
 //STRUCTS
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		width;
+	int		height;
+}	t_img;
+
 typedef struct s_textures
 {
-	char			*north;
-	char			*south;
-	char			*west;
-	char			*east;
+	char			*north_path;
+	char			*south_path;
+	char			*west_path;
+	char			*east_path;
+	t_img			north;
+	t_img			south;
+	t_img			west;
+	t_img			east;
 	int				floor[3];
 	int				ceiling[3];
 	int				floor_set;
@@ -81,6 +97,7 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	double	speed;
 }	t_player;
 
 typedef struct s_ray
@@ -104,22 +121,12 @@ typedef struct s_ray
 	int		draw_end;
 }	t_ray;
 
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}	t_img;
-
 typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
 	int			win_height;
 	int			win_width;
-	bool		should_close;
 	t_img		frame;
 	t_map		map;
 	t_player	player;
@@ -134,6 +141,13 @@ typedef struct s_data
 
 # define FT_FOV 0.66
 
+# define FT_MOVE_SPEED 0.05
+# define FT_RUN_SPEED 0.09
+
+# define FT_ROT_SPEED 0.05
+
+# define FT_COLLISION_MARGIN 1
+
 //PARSER
 int				parser(t_data *data);
 int				check_cub(char *filename);
@@ -145,6 +159,7 @@ int				check_cell(char **m, int i, int j, int max_y);
 int				is_valid_char(char c);
 int				set_map(t_data *data);
 t_identifier	get_identifier(char *line);
+int				strip_newlines(char **map);
 
 //INIT
 int				init(t_data *data, char **argv);
@@ -166,5 +181,10 @@ void			clear_image(t_data *data);
 //RAYCASTING
 int				raycasting(t_data *data);
 int				main_loop(t_data *data);
+int				load_textures(t_data *data);
+t_img   		*get_wall_texture(t_data *data, t_ray *ray);
+double  		calculate_wall_x(t_ray *ray, t_player *player);
+int 			calculate_tex_x(t_img *texture, t_ray *ray, double wall_x);
+unsigned int    get_texture_pixel(t_img *texture, int tex_x, int tex_y);
 
 #endif

@@ -1,10 +1,10 @@
-NO ../textures/backrooms_wall_texture.xpm
-SO ../textures/backrooms_wall_texture.xpm
-WE ../textures/backrooms_wall_texture.xpm
-EA ../textures/backrooms_wall_texture.xpm
+NO ./textures/backrooms_wall_texture_N.xpm
+SO ./textures/backrooms_wall_texture_S.xpm
+WE ./textures/backrooms_wall_texture_W.xpm
+EA ./textures/backrooms_wall_texture_E.xpm
 
-F 220,100,0
-C 225,30,0
+F 204,204,0
+C 212,212,212
 
         1111111111111111111111111
         1000000000110000000000001
@@ -15,7 +15,7 @@ C 225,30,0
 11110111111111011100000010001
 11110111111111011101010010001
 11000000110101011100000010001
-10000000000000W01100000010001
+10000000000000E01100000010001
 10000000000000001101010010001
 110000011101010111110111100111
 11110111 1110101 101111010001

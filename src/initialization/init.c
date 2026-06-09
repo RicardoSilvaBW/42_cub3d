@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
+/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:12:51 by feazeved          #+#    #+#             */
-/*   Updated: 2026/06/03 17:03:43 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:11:36 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int init(t_data *data, char **argv)
         return (1);
     }
     if (stt_init_mlx(data))
+        return (free_parse(data), 1);
+    if (load_textures(data))
         return (free_parse(data), 1);
     stt_init_hooks(data);
     return (0);

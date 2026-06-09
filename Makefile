@@ -5,6 +5,7 @@ RM = rm -f
 NAME = cub3d
 
 SRC_DIR = src
+INIT_DIR = $(SRC_DIR)/initialization
 PARSE_DIR = $(SRC_DIR)/parser
 UTILS_DIR = $(SRC_DIR)/utils
 RENDER_DIR = $(SRC_DIR)/render
@@ -13,10 +14,10 @@ MLX_DIR = libs/minilibx
 
 SRC_FILES = \
 	$(SRC_DIR)/main.c \
-	$(SRC_DIR)/init.c \
-	$(SRC_DIR)/input.c \
-	$(SRC_DIR)/clean.c \
-	$(SRC_DIR)/drawing_utils.c \
+	$(INIT_DIR)/init.c \
+	$(INIT_DIR)/input.c \
+	$(UTILS_DIR)/clean.c \
+	$(UTILS_DIR)/drawing_utils.c \
 	$(PARSE_DIR)/check_args.c \
 	$(PARSE_DIR)/check_textures.c \
 	$(PARSE_DIR)/check_colors.c \
@@ -24,7 +25,9 @@ SRC_FILES = \
 	$(PARSE_DIR)/check_map_utils.c \
 	$(PARSE_DIR)/set_map.c \
 	$(PARSE_DIR)/parser.c \
-	$(RENDER_DIR)/raycasting.c \
+	$(RENDER_DIR)/render_raycasting.c \
+	$(RENDER_DIR)/render_textures.c \
+	$(RENDER_DIR)/render_calculate.c \
 
 OBJS = $(SRC_FILES:%.c=%.o)
 LIBFT = $(LIBFT_DIR)/libft.a
