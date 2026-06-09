@@ -12,10 +12,6 @@
 
 #include "cub3d.h"
 
-static const char	lut[256] = {
-		['0'] = 1, ['1'] = 1, [' '] = 1, ['N'] = 1, ['S'] = 1, ['W'] = 1,
-		['E'] = 1};
-
 static void	init_dir_plane(t_data *data)
 {
 	if (data->player.dir == 'N')
@@ -61,7 +57,7 @@ static int	check_elements_and_player(t_data *data, int *num_player)
 		j = 0;
 		while (data->map.map[i][j])
 		{
-			if (!lut[(unsigned char)data->map.map[i][j]])
+			if (!is_valid_char(data->map.map[i][j]))
 				return (1);
 			if (ft_strchr("NSWE", data->map.map[i][j]))
 			{
@@ -81,25 +77,18 @@ static int	check_walls(t_data *data, int max_y)
 	int		j;
 	char	**m;
 
-	i = -1;
+	i = 0;
 	m = data->map.map;
-	while (m[++i])
+	while (m[i])
 	{
-		j = -1;
-		while (m[i][++j])
+		j = 0;
+		while (m[i][j])
 		{
-			if (lut[(unsigned char)data->map.map[i][j]])
-			{
-				if (!i || i == max_y || !j || !m[i][j + 1])
-					return (1);
-				if (m[i][j - 1] == ' ' || m[i][j + 1] == ' ')
-					return (1);
-				if ((int)ft_strlen(m[i - 1]) <= j || m[i - 1][j] == ' ')
-					return (1);
-				if ((int)ft_strlen(m[i + 1]) <= j || m[i + 1][j] == ' ')
-					return (1);
-			}
+			if (check_cell(m, i, j, max_y))
+				return (1);
+			j++;
 		}
+		i++;
 	}
 	return (0);
 }
@@ -111,12 +100,12 @@ int parse_map(t_data *data)
 
 	num_player = 0;
 	if (check_elements_and_player(data, &num_player) || num_player != 1)
-		return (write(2, "Error: Invalid map elements.\n", 29), 1);
+		return (write(2, "Error: Invalid map elements.\n", 29), 0);
 	max_y = 0;
 	while (data->map.map[max_y])
 		max_y++;
 	max_y--;
 	if (check_walls(data, max_y))
-		return (write(2, "Error: Invalid map.\n", 20), 1);
-    return (0);
+		return (write(2, "Error: Invalid map.\n", 20), 0);
+    return (1);
 }

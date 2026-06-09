@@ -13,28 +13,26 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "libft/libft.h"
-#include "mlx.h"
-#include "minilibx/mlx.h"
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <math.h>
-#include <stdio.h>
-
+# include "libft/libft.h"
+# include "mlx.h"
+# include "minilibx/mlx.h"
+# include <fcntl.h>
+# include <stdlib.h>
+# include <stdbool.h>
+# include <math.h>
+# include <stdio.h>
 
 //ENUM
-
 typedef enum e_identifier
 {
-  ID_NONE,
-  ID_NO,
-  ID_SO,
-  ID_WE,
-  ID_EA,
-  ID_F,
-  ID_C
-} t_identifier;
+	ID_NONE,
+	ID_NO,
+	ID_SO,
+	ID_WE,
+	ID_EA,
+	ID_F,
+	ID_C
+}	t_identifier;
 
 enum e_keys
 {
@@ -52,62 +50,61 @@ enum e_keys
 
 typedef struct s_textures
 {
-  char          *north;
-  char          *south;
-  char          *west;
-  char          *east;
-  int           floor[3];
-  int           ceiling[3];
-  int           floor_set;
-  int           ceiling_set;
-  unsigned long hex_floor_color;
-  unsigned long hex_ceiling_color;
-} t_textures;
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
+	int				floor[3];
+	int				ceiling[3];
+	int				floor_set;
+	int				ceiling_set;
+	unsigned long	hex_floor_color;
+	unsigned long	hex_ceiling_color;
+}	t_textures;
 
 typedef struct s_map
 {
-  int   fd;
-  char  **file;
-  char  **map;
-  int   width;
-  int   height;
-  char *path;
-} t_map;
+	int		fd;
+	char	**file;
+	char	**map;
+	int		width;
+	int		height;
+	char	*path;
+}	t_map;
 
 typedef struct s_player
 {
-  char    dir;
-  double  pos_x;
-  double  pos_y;
-  double  dir_x;
-  double  dir_y;
-  double  plane_x;
-  double  plane_y;
-} t_player;
+	char	dir;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}	t_player;
 
 typedef struct s_ray
 {
-  double  camera_x;
-  double  ray_dir_x;
-  double  ray_dir_y;
-  double  delta_dist_x;
-  double  delta_dist_y;
-  double  side_dist_x;
-  double  side_dist_y;
-  double  perp_wall_dist;
-  int     map_x;
-  int     map_y;
-  int     step_x;
-  int     step_y;
-  int     hit;
-  int     side;
-  int     line_height;
-  int     draw_start;
-  int     draw_end;
-} t_ray;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	perp_wall_dist;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+}	t_ray;
 
-
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	char	*addr;
@@ -118,55 +115,56 @@ typedef struct	s_img
 
 typedef struct s_data
 {
-    void        *mlx;
-    void        *win;
-    int         win_height;
-    int         win_width;
-	  bool        should_close;
-	  t_img       frame;
-    t_map       map;
-    t_player    player;
-    t_ray       ray;
-    size_t      keys;
-    t_textures  textures;
-} t_data;
+	void		*mlx;
+	void		*win;
+	int			win_height;
+	int			win_width;
+	bool		should_close;
+	t_img		frame;
+	t_map		map;
+	t_player	player;
+	t_ray		ray;
+	size_t		keys;
+	t_textures	textures;
+}	t_data;
 
-#define FT_WIDTH 1920
+# define FT_WIDTH 1920
 
-#define FT_HEIGHT 1080
+# define FT_HEIGHT 1080
 
-#define FT_FOV 0.66f
+# define FT_FOV 0.66
 
 //PARSER
-int   parser(t_data *data);
-int		check_cub(char *filename);
-int   check_xpm(char *filename);
-int   parse_textures(t_data *data);
-int   parse_colors(t_data *data);
-int   parse_map(t_data *data);
-t_identifier get_identifier(char *line);
+int				parser(t_data *data);
+int				check_cub(char *filename);
+int				check_xpm(char *filename);
+int				parse_textures(t_data *data);
+int				parse_colors(t_data *data);
+int				parse_map(t_data *data);
+int				check_cell(char **m, int i, int j, int max_y);
+int				is_valid_char(char c);
+int				set_map(t_data *data);
+t_identifier	get_identifier(char *line);
 
 //INIT
-int		init(t_data *data, char **argv);
+int				init(t_data *data, char **argv);
 
 //INPUT
-int 	key_press(int keycode, t_data *data);
-int 	key_release(int keycode, t_data *data);
+int				key_press(int keycode, t_data *data);
+int				key_release(int keycode, t_data *data);
 
 //CLEAN
-void	free_split(char **split);
-void  free_parse(t_data *data);
-void  clean(t_data *data);
+void			free_split(char **split);
+void			free_parse(t_data *data);
+void			clean(t_data *data);
+int				close_window(t_data *data);
 
 //DRAWING_UTILS
-void	put_pixel(t_img *img, int x, int y, int color);
-void	clear_image(t_data *data);
-
-//RENDER
-void    render_walls(t_data *data);
+void			put_pixel(t_img *img, int x, int y, int color);
+void			clear_image(t_data *data);
 
 //RAYCASTING
-int raycasting(t_data *data, t_player *player);
-
+int				raycasting(t_data *data);
+int				main_loop(t_data *data);
 
 #endif

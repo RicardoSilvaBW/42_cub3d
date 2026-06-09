@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "mlx.h"
 
 void	free_split(char **split)
 {
@@ -43,11 +44,13 @@ void  free_parse(t_data *data)
 
 void    clean(t_data *data)
 {
-    if (data && data->mlx)
-    {
-        //destroy image
-        mlx_destroy_window(data->mlx, data->win);
-        mlx_destroy_display(data->mlx);
-    }
-    free_parse(data);
+	free_parse(data);
+	if (data->mlx && data->win)
+		mlx_destroy_window(data->mlx, data->win);
+	if (data->mlx && data->frame.img)
+		mlx_destroy_image(data->mlx, data->frame.img);
+	if (data->mlx)
+		mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	exit(0);
 }

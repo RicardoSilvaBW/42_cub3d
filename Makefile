@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -Werror -Wall -Wextra -g
 INCLUDES = -I includes -I libs -I libs/minilibx
-RM = rm -f 
+RM = rm -f
 NAME = cub3d
 
 SRC_DIR = src
@@ -17,11 +17,12 @@ SRC_FILES = \
 	$(SRC_DIR)/input.c \
 	$(SRC_DIR)/clean.c \
 	$(SRC_DIR)/drawing_utils.c \
-	$(SRC_DIR)/render_walls.c \
 	$(PARSE_DIR)/check_args.c \
 	$(PARSE_DIR)/check_textures.c \
 	$(PARSE_DIR)/check_colors.c \
 	$(PARSE_DIR)/check_map.c \
+	$(PARSE_DIR)/check_map_utils.c \
+	$(PARSE_DIR)/set_map.c \
 	$(PARSE_DIR)/parser.c \
 	$(RENDER_DIR)/raycasting.c \
 
@@ -56,6 +57,4 @@ fclean: clean
 
 re: clean all
 
-.PHONY: all clean fclean re 
-	
-
+.PHONY: all clean fclean re

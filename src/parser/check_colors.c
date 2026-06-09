@@ -1,6 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
- /*                                                        :::      ::::::::   */
+/*                                                        :::      ::::::::   */
 /*   check_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
@@ -60,9 +60,9 @@ static int	store_color(int color[3], int *flag, char *rgb_string)
 
 static int  parse_color_line(t_data *data, char *line)
 {
-    char            *rgb; 
+    char            *rgb;
     t_identifier    id;
-    
+
     id = get_identifier(line);
     if (id == ID_NONE)
         return (1);
@@ -78,7 +78,8 @@ static int  parse_color_line(t_data *data, char *line)
 
 int parse_colors(t_data *data)
 {
-    int i;
+    int			i;
+    t_textures	*t;
 
     i = 0;
     while (data->map.file[i])
@@ -91,6 +92,8 @@ int parse_colors(t_data *data)
         return (write(2, "Error: Missing floor color.\n", 28), 0);
     if (!data->textures.ceiling_set)
         return (write(2, "Error: Missing ceiling color.\n", 30), 0);
+    t = &data->textures;
+    t->hex_floor_color = ((t->floor[0] << 16) | (t->floor[1] << 8) | (t->floor[2]));
+    t->hex_ceiling_color = ((t->ceiling[0] << 16) | (t->ceiling[1] << 8) | (t->ceiling[2]));
     return (1);
 }
-

@@ -16,7 +16,7 @@ void	put_pixel(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < 0 || y < 0 || x >= FT_HEIGHT || y >= FT_HEIGHT)
+	if (x < 0 || y < 0 || x >= FT_WIDTH || y >= FT_HEIGHT)
 		return ;
 	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
 	*(unsigned int *)dst = color;
@@ -44,4 +44,3 @@ void	clear_image(t_data *data)
 		y++;
 	}
 }
-

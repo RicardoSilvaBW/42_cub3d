@@ -64,12 +64,11 @@ int parser(t_data *data)
 {
     if (!load_file(data, data->map.path))
         return (0);
-    if (!parse_textures(data))
+    if (!parse_textures(data) || !parse_colors(data))
         return (free_parse(data), 0);
-    if (!parse_colors(data))
-        return (0);
+    if (!set_map(data))
+    	return (0);
     if (!parse_map(data))
         return (0);
     return (1);
 }
-
