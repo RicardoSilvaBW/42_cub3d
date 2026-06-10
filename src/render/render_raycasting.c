@@ -113,8 +113,8 @@ static void draw_textured_column(t_data *data, t_ray *ray, t_img *texture, int x
 
 	step = (double)texture->height / ray->line_height;
 	tex_pos = (ray->draw_start
-			- data->win_height / 2
-			+ ray-> line_height / 2) * step;
+			- (double)data->win_height / 2
+			+ (double)ray-> line_height / 2) * step;
 
 	while (y <= ray->draw_end)
 	{

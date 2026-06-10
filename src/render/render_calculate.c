@@ -21,7 +21,7 @@ double  calculate_wall_x(t_ray *ray, t_player *player)
     else
         wall_x = player->pos_x + ray->perp_wall_dist * ray->ray_dir_x;
     wall_x -= floor(wall_x);
-    return (wall_x);
+    return (wall_x * -1);
 }
 
 int calculate_tex_x(t_img *texture, t_ray *ray, double wall_x)
