@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
+/*   By: rjorge-p <rjorge-p@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 12:24:12 by rjorge-p          #+#    #+#             */
 /*   Updated: 2026/06/10 17:44:24 by rjorge-p         ###   ########.fr       */

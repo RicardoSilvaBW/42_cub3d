@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   render_calculate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
+/*   By: rjorge-p <rjorge-p@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 17:37:34 by rjorge-p          #+#    #+#             */
 /*   Updated: 2026/06/10 18:53:20 by rjorge-p         ###   ########.fr       */

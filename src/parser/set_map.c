@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   set_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
+/*   By: rjorge-p <rjorge-p@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:00:00 by rjorge-p          #+#    #+#             */
 /*   Updated: 2026/06/10 17:44:09 by rjorge-p         ###   ########.fr       */

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
+/*   By: rjorge-p <rjorge-p@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:27:52 by rjorge-p          #+#    #+#             */
 /*   Updated: 2026/06/10 17:32:50 by rjorge-p         ###   ########.fr       */

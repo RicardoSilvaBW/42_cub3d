@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "mlx.h"
 
 void	rotate_player(t_player *p, double angle)
 {
