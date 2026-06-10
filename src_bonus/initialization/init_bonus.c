@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:12:51 by feazeved          #+#    #+#             */
-/*   Updated: 2026/06/09 16:11:36 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/10 16:06:17 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <X11/Xlib.h>
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 #include "mlx.h"
 
 static void stt_init_hooks(t_data *data)
