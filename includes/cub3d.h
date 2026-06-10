@@ -141,10 +141,10 @@ typedef struct s_data
 
 # define FT_FOV 0.66
 
-# define FT_MOVE_SPEED 0.05
-# define FT_RUN_SPEED 0.1
+# define FT_MOVE_SPEED 0.03
+# define FT_RUN_SPEED 0.07
 
-# define FT_ROT_SPEED 0.05
+# define FT_ROT_SPEED 0.03
 
 # define FT_COLLISION_MARGIN 1.5
 
@@ -167,6 +167,9 @@ int				init(t_data *data, char **argv);
 //INPUT
 int				key_press(int keycode, t_data *data);
 int				key_release(int keycode, t_data *data);
+void			handle_movement(t_data *data);
+
+void			rotate_player(t_player *p, double angle);
 
 //CLEAN
 void			free_split(char **split);

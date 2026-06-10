@@ -6,6 +6,7 @@ NAME = cub3D
 
 SRC_DIR = src
 INIT_DIR = $(SRC_DIR)/initialization
+INPUT_DIR = $(SRC_DIR)/input
 PARSE_DIR = $(SRC_DIR)/parser
 UTILS_DIR = $(SRC_DIR)/utils
 RENDER_DIR = $(SRC_DIR)/render
@@ -15,7 +16,9 @@ MLX_DIR = libs/minilibx
 SRC_FILES = \
 	$(SRC_DIR)/main.c \
 	$(INIT_DIR)/init.c \
-	$(INIT_DIR)/input.c \
+	$(INPUT_DIR)/input.c \
+	$(INPUT_DIR)/handle_movement.c \
+	$(INPUT_DIR)/handle_rotation.c \
 	$(UTILS_DIR)/clean.c \
 	$(UTILS_DIR)/drawing_utils.c \
 	$(PARSE_DIR)/check_args.c \
