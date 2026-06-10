@@ -42,7 +42,7 @@ static int	load_file(t_data *data, char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		return (perror("Error"), 0);
+		return (0);
 	data->map.file = malloc(sizeof(char *) * (num_lines + 1));
 	if (!data->map.file)
 		return (perror("Error"), 0);
