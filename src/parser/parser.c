@@ -69,8 +69,8 @@ int	parser(t_data *data)
 	if (!parse_textures(data) || !parse_colors(data))
 		return (free_parse(data), 0);
 	if (!set_map(data))
-		return (0);
+		return (free_parse(data), 0);
 	if (!parse_map(data))
-		return (0);
+		return (free_parse(data), 0);
 	return (1);
 }
