@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_raycasting.c                                :+:      :+:    :+:   */
+/*   render_raycasting_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
+/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 13:21:49 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/06/09 19:40:27 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/10 16:08:04 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 #define WALL_LIGTH 0x00FF00
 #define WALL_DARK 0x007700

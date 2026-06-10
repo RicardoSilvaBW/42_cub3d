@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_calculate.c                                 :+:      :+:    :+:   */
+/*   render_calculate_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p <<rjorge-p@student.42.fr> >       +#+  +:+       +#+        */
+/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 17:37:34 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/06/09 19:32:44 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/10 16:07:54 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 double  calculate_wall_x(t_ray *ray, t_player *player)
 {

@@ -6,7 +6,7 @@
 /*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 12:26:07 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/06/10 16:06:00 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:58:49 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,15 @@ typedef struct s_ray
 	int		draw_end;
 }	t_ray;
 
+typedef struct s_minimap
+{
+	int	x;
+	int	y;
+	int	cell_size;
+	int	width;
+	int	height;
+}	t_minimap;
+
 typedef struct s_data
 {
 	void		*mlx;
@@ -133,6 +142,7 @@ typedef struct s_data
 	t_ray		ray;
 	size_t		keys;
 	t_textures	textures;
+	t_minimap	minimap;
 }	t_data;
 
 # define FT_WIDTH 1920
@@ -147,6 +157,11 @@ typedef struct s_data
 # define FT_ROT_SPEED 0.05
 
 # define FT_COLLISION_MARGIN 1.5
+
+//MINIMAP COLORS
+#define MINI_WALL 	0xFFFFFF
+#define MINI_BG   	0x222222
+#define MINI_PLAYER	0xFF0000
 
 //PARSER
 int				parser(t_data *data);
@@ -186,5 +201,6 @@ t_img   		*get_wall_texture(t_data *data, t_ray *ray);
 double  		calculate_wall_x(t_ray *ray, t_player *player);
 int 			calculate_tex_x(t_img *texture, t_ray *ray, double wall_x);
 unsigned int    get_texture_pixel(t_img *texture, int tex_x, int tex_y);
+void			draw_minimap(t_data *data);
 
 #endif
