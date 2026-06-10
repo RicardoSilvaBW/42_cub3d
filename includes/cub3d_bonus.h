@@ -185,10 +185,10 @@ void			clear_image(t_data *data);
 int				raycasting(t_data *data);
 int				main_loop(t_data *data);
 int				load_textures(t_data *data);
-t_img   		*get_wall_texture(t_data *data, t_ray *ray);
-double  		calculate_wall_x(t_ray *ray, t_player *player);
-int 			calculate_tex_x(t_img *texture, t_ray *ray, double wall_x);
+t_img			*get_wall_texture(t_data *data, t_ray *ray);
+double			calculate_wall_x(t_ray *ray, t_player *player);
+int				calculate_tex_x(t_img *texture, t_ray *ray, double wall_x);
 void			calculate_wall_dist(t_ray *ray, t_data *data);
-unsigned int    get_texture_pixel(t_img *texture, int tex_x, int tex_y);
+unsigned int	get_texture_pixel(t_img *texture, int tex_x, int tex_y);
 
 #endif
