@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_calculate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p <rjorge-p@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 17:37:34 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/06/09 19:32:44 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/10 18:53:20 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ double	calculate_wall_x(t_ray *ray, t_player *player)
 	else
 		wall_x = player->pos_x + ray->perp_wall_dist * ray->ray_dir_x;
 	wall_x -= floor(wall_x);
-	return (wall_x * -1);
+	return (wall_x);
 }
 
 int	calculate_tex_x(t_img *texture, t_ray *ray, double wall_x)
