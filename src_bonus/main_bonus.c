@@ -30,6 +30,7 @@ int	main_loop(t_data *data)
 	update(data);
 	raycasting(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->frame.img, 0, 0);
+	mlx_mouse_move(data->mlx, data->win, FT_WIDTH / 2, FT_HEIGHT / 2);
 	return (0);
 }
 

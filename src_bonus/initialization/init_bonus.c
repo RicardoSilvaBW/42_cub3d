@@ -23,6 +23,7 @@ static void	stt_init_hooks(t_data *data)
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release, data);
 	mlx_hook(data->win, DestroyNotify, 0, mlx_loop_end, data->mlx);
 	mlx_loop_hook(data->mlx, main_loop, data);
+	mlx_hook(data->win, 6, 1L << 6, handle_mouse, data);
 }
 
 static int	stt_init_mlx(t_data *d)

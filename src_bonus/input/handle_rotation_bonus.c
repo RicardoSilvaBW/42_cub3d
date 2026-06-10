@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "mlx.h"
 
 void	rotate_player(t_player *p, double angle)
 {
@@ -23,4 +24,16 @@ void	rotate_player(t_player *p, double angle)
 	old_plane_x = p->plane_x;
 	p->plane_x = p->plane_x * cos(angle) - p->plane_y * sin(angle);
 	p->plane_y = old_plane_x * sin(angle) + p->plane_y * cos(angle);
+}
+
+int	handle_mouse(int x, int y, t_data *d)
+{
+	const int	center_x = FT_WIDTH / 2;
+
+	(void)y;
+	if (center_x - x < 0)
+		rotate_player(&d->player, 0.03);
+	if (center_x - x > 0)
+		rotate_player(&d->player, -0.03);
+	return (0);
 }

@@ -170,6 +170,7 @@ int				key_release(int keycode, t_data *data);
 void			handle_movement(t_data *data);
 
 void			rotate_player(t_player *p, double angle);
+int				handle_mouse(int x, int y, t_data *d);
 
 //CLEAN
 void			free_split(char **split);
