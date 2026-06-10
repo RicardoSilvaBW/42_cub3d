@@ -6,7 +6,7 @@
 /*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 12:26:07 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/06/10 16:06:00 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/09 17:41:07 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,10 +141,10 @@ typedef struct s_data
 
 # define FT_FOV 0.66
 
-# define FT_MOVE_SPEED 0.05
-# define FT_RUN_SPEED 0.1
+# define FT_MOVE_SPEED 0.03
+# define FT_RUN_SPEED 0.07
 
-# define FT_ROT_SPEED 0.05
+# define FT_ROT_SPEED 0.03
 
 # define FT_COLLISION_MARGIN 1.5
 
@@ -167,6 +167,9 @@ int				init(t_data *data, char **argv);
 //INPUT
 int				key_press(int keycode, t_data *data);
 int				key_release(int keycode, t_data *data);
+void			handle_movement(t_data *data);
+
+void			rotate_player(t_player *p, double angle);
 
 //CLEAN
 void			free_split(char **split);
@@ -185,6 +188,7 @@ int				load_textures(t_data *data);
 t_img   		*get_wall_texture(t_data *data, t_ray *ray);
 double  		calculate_wall_x(t_ray *ray, t_player *player);
 int 			calculate_tex_x(t_img *texture, t_ray *ray, double wall_x);
+void			calculate_wall_dist(t_ray *ray, t_data *data);
 unsigned int    get_texture_pixel(t_img *texture, int tex_x, int tex_y);
 
 #endif

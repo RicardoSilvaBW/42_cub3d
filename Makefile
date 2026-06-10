@@ -10,6 +10,7 @@ BONUS_NAME = cub3D_bonus
 SRC_DIR = src
 SRC_BONUS_DIR = src_bonus
 INIT_DIR = $(SRC_DIR)/initialization
+INPUT_DIR = $(SRC_DIR)/input
 PARSE_DIR = $(SRC_DIR)/parser
 UTILS_DIR = $(SRC_DIR)/utils
 RENDER_DIR = $(SRC_DIR)/render
@@ -17,6 +18,7 @@ RENDER_DIR = $(SRC_DIR)/render
 #BONUS
 BONUS_DIR = $(SRC_BONUS_DIR)/bonus
 INIT_BONUS_DIR = $(SRC_BONUS_DIR)/initialization
+INPUT_BONUS_DIR = $(SRC_BONUS_DIR)/input
 PARSE_BONUS_DIR = $(SRC_BONUS_DIR)/parser
 UTILS_BONUS_DIR = $(SRC_BONUS_DIR)/utils
 RENDER_BONUS_DIR = $(SRC_BONUS_DIR)/render
@@ -25,11 +27,13 @@ RENDER_BONUS_DIR = $(SRC_BONUS_DIR)/render
 LIBFT_DIR = libs/libft
 MLX_DIR = libs/minilibx
 
-#MANDATORY 
+#MANDATORY
 SRC_FILES = \
 	$(SRC_DIR)/main.c \
 	$(INIT_DIR)/init.c \
-	$(INIT_DIR)/input.c \
+	$(INPUT_DIR)/input.c \
+	$(INPUT_DIR)/handle_movement.c \
+	$(INPUT_DIR)/handle_rotation.c \
 	$(UTILS_DIR)/clean.c \
 	$(UTILS_DIR)/drawing_utils.c \
 	$(PARSE_DIR)/check_args.c \
@@ -46,7 +50,9 @@ SRC_FILES = \
 SRC_BONUS_FILES = \
 	$(SRC_BONUS_DIR)/main_bonus.c \
 	$(INIT_BONUS_DIR)/init_bonus.c \
-	$(INIT_BONUS_DIR)/input_bonus.c \
+	$(INPUT_BONUS_DIR)/input_bonus.c \
+	$(INPUT_BONUS_DIR)/handle_movement_bonus.c \
+	$(INPUT_BONUS_DIR)/handle_rotation_bonus.c \
 	$(UTILS_BONUS_DIR)/clean_bonus.c \
 	$(UTILS_BONUS_DIR)/drawing_utils_bonus.c \
 	$(PARSE_BONUS_DIR)/check_args_bonus.c \
@@ -80,7 +86,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(MLX) $(MLXFLAGS) -o $(NAME)
 
 $(BONUS_NAME): $(BONUS_OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(BONUS_OBJS*) $(LIBFT) $(MLX) $(MLXFLAGS) -o $(BONUS_NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) $(BONUS_OBJS) $(LIBFT) $(MLX) $(MLXFLAGS) -o $(BONUS_NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

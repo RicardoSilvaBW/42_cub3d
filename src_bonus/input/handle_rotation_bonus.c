@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args_bonus.c                                 :+:      :+:    :+:   */
+/*   handle_rotation_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rjorge-p <rjorge-p@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/18 12:24:12 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/06/10 16:52:13 by rjorge-p         ###   ########.fr       */
+/*   Created: 2026/05/22 11:14:16 by feazeved          #+#    #+#             */
+/*   Updated: 2026/06/03 17:11:23 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-int	check_cub(char *filename)
+void	rotate_player(t_player *p, double angle)
 {
-	int	len;
+	double	old_dir_x;
+	double	old_plane_x;
 
-	if (!filename)
-		return (0);
-	len = ft_strlen(filename);
-	if (len < 4)
-		return (0);
-	if (ft_strncmp(filename + len - 4, ".cub", 4) != 0)
-		return (0);
-	return (1);
-}
-
-int	check_xpm(char *filename)
-{
-	int	len;
-
-	if (!filename)
-		return (0);
-	len = ft_strlen(filename);
-	if (len < 5)
-		return (0);
-	if (ft_strncmp(filename + len - 5, ".xpm\n", 5) != 0)
-		return (0);
-	return (1);
+	old_dir_x = p->dir_x;
+	p->dir_x = p->dir_x * cos(angle) - p->dir_y * sin(angle);
+	p->dir_y = old_dir_x * sin(angle) + p->dir_y * cos(angle);
+	old_plane_x = p->plane_x;
+	p->plane_x = p->plane_x * cos(angle) - p->plane_y * sin(angle);
+	p->plane_y = old_plane_x * sin(angle) + p->plane_y * cos(angle);
 }

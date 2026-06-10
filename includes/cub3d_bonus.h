@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/18 12:26:07 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/06/10 15:58:49 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/09 17:41:07 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include "libft/libft.h"
 # include "mlx.h"
@@ -121,15 +121,6 @@ typedef struct s_ray
 	int		draw_end;
 }	t_ray;
 
-typedef struct s_minimap
-{
-	int	x;
-	int	y;
-	int	cell_size;
-	int	width;
-	int	height;
-}	t_minimap;
-
 typedef struct s_data
 {
 	void		*mlx;
@@ -142,7 +133,6 @@ typedef struct s_data
 	t_ray		ray;
 	size_t		keys;
 	t_textures	textures;
-	t_minimap	minimap;
 }	t_data;
 
 # define FT_WIDTH 1920
@@ -151,17 +141,12 @@ typedef struct s_data
 
 # define FT_FOV 0.66
 
-# define FT_MOVE_SPEED 0.05
-# define FT_RUN_SPEED 0.1
+# define FT_MOVE_SPEED 0.03
+# define FT_RUN_SPEED 0.07
 
-# define FT_ROT_SPEED 0.05
+# define FT_ROT_SPEED 0.03
 
 # define FT_COLLISION_MARGIN 1.5
-
-//MINIMAP COLORS
-#define MINI_WALL 	0xFFFFFF
-#define MINI_BG   	0x222222
-#define MINI_PLAYER	0xFF0000
 
 //PARSER
 int				parser(t_data *data);
@@ -182,6 +167,9 @@ int				init(t_data *data, char **argv);
 //INPUT
 int				key_press(int keycode, t_data *data);
 int				key_release(int keycode, t_data *data);
+void			handle_movement(t_data *data);
+
+void			rotate_player(t_player *p, double angle);
 
 //CLEAN
 void			free_split(char **split);
@@ -200,7 +188,7 @@ int				load_textures(t_data *data);
 t_img   		*get_wall_texture(t_data *data, t_ray *ray);
 double  		calculate_wall_x(t_ray *ray, t_player *player);
 int 			calculate_tex_x(t_img *texture, t_ray *ray, double wall_x);
+void			calculate_wall_dist(t_ray *ray, t_data *data);
 unsigned int    get_texture_pixel(t_img *texture, int tex_x, int tex_y);
-void			draw_minimap(t_data *data);
 
 #endif

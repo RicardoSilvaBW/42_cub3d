@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   check_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p <rjorge-p@student.42porto.com>   +#+  +:+       +#+        */
+/*   By: rjorge-p <rjorge-p@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 13:34:03 by rjorge-p          #+#    #+#             */
 /*   Updated: 2026/06/10 17:22:33 by rjorge-p         ###   ########.fr       */

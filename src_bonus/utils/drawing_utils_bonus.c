@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawing_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
+/*   By: feazeved <feazeved@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:14:16 by feazeved          #+#    #+#             */
-/*   Updated: 2026/06/10 16:08:16 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/05/22 11:15:06 by feazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: rjorge-p < rjorge-p@student.42porto.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:00:00 by rjorge-p          #+#    #+#             */
-/*   Updated: 2026/06/10 16:07:28 by rjorge-p         ###   ########.fr       */
+/*   Updated: 2026/06/10 17:44:09 by rjorge-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,6 @@ static int	check_blank_line(char **file, int start)
 		i++;
 	}
 	return (0);
-}
-
-int	strip_newlines(char **map)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	while (map[i])
-	{
-		len = ft_strlen(map[i]);
-		if (len > 0 && map[i][len - 1] == '\n')
-			map[i][len -1] = '\0';
-		i++;
-	}
-	return (1);
 }
 
 int	set_map(t_data *data)
