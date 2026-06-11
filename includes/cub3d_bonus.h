@@ -127,6 +127,7 @@ typedef struct s_data
 	void		*win;
 	int			win_height;
 	int			win_width;
+	int			paused;
 	t_img		frame;
 	t_map		map;
 	t_player	player;
