@@ -31,8 +31,8 @@ int	handle_mouse(int x, int y, t_data *d)
 
 	(void)y;
 	if (center_x - x < 0)
-		rotate_player(&d->player, 0.03);
+		rotate_player(&d->player, 0.023);
 	if (center_x - x > 0)
-		rotate_player(&d->player, -0.03);
+		rotate_player(&d->player, -0.023);
 	return (0);
 }
